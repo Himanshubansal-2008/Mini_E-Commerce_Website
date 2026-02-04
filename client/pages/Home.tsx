@@ -116,8 +116,7 @@ function ProductCard({ product }: { product: Product }) {
     <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
       {/* Image */}
       <div
-        className="relative h-48 md:h-56 bg-gradient-to-br overflow-hidden"
-        style={{ backgroundImage: product.image }}
+        className="relative h-48 md:h-56 overflow-hidden bg-muted"
       >
         {/* Discount Badge */}
         {discount > 0 && (
