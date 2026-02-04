@@ -18,6 +18,18 @@ export default function Header({
   onLogoutClick,
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const { setSearchQuery, cart } = useStore();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchInput.trim()) {
+      setSearchQuery(searchInput);
+      navigate("/search");
+      setSearchInput("");
+    }
+  };
 
   const navLinks = [
     { label: "Home", href: "/", isHash: false },
