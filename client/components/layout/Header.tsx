@@ -142,14 +142,26 @@ export default function Header({
 
             {/* Mobile Nav Links */}
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.isHash ? (
+                <button
+                  key={link.href}
+                  onClick={() => {
+                    handleNavClick(link.href, link.isHash);
+                  }}
+                  className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-2 w-full text-left"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
 
             {/* Mobile Auth Button */}
