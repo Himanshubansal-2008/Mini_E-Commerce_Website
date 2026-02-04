@@ -19,12 +19,22 @@ export default function Header({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Men", href: "#men" },
-    { label: "Women", href: "#women" },
-    { label: "Trending", href: "#trending" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/", isHash: false },
+    { label: "Men", href: "men", isHash: true },
+    { label: "Women", href: "women", isHash: true },
+    { label: "Trending", href: "trending", isHash: true },
+    { label: "Contact", href: "contact", isHash: true },
   ];
+
+  const handleNavClick = (href: string, isHash: boolean) => {
+    if (isHash) {
+      const element = document.getElementById(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setIsMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
