@@ -353,7 +353,7 @@ export default function Home() {
       </section>
 
       {/* Men's Collection */}
-      <section id="men" className="py-16 md:py-24">
+      <section id="men" className="py-16 md:py-24 scroll-mt-16">
         <div className="container">
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
