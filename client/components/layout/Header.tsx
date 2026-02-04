@@ -88,24 +88,26 @@ export default function Header({
         {/* Right Side Actions */}
         <div className="flex items-center gap-3 md:gap-4">
           {/* Search - Desktop */}
-          <div className="hidden md:flex items-center bg-muted rounded-lg px-3 py-2 gap-2">
+          <form onSubmit={handleSearch} className="hidden md:flex items-center bg-muted rounded-lg px-3 py-2 gap-2">
             <Search className="w-4 h-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search products..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
               className="bg-transparent text-sm outline-none w-32 placeholder:text-muted-foreground"
             />
-          </div>
+          </form>
 
           {/* Cart */}
-          <button className="relative p-2 hover:bg-muted rounded-lg transition-colors">
+          <Link to="/cart" className="relative p-2 hover:bg-muted rounded-lg transition-colors">
             <ShoppingCart className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-            {cartCount > 0 && (
+            {cart.length > 0 && (
               <span className="absolute top-0 right-0 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center">
-                {cartCount}
+                {cart.length}
               </span>
             )}
-          </button>
+          </Link>
 
           {/* Auth Button - Desktop */}
           <button
