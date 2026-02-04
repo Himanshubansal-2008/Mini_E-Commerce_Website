@@ -118,6 +118,11 @@ function ProductCard({ product }: { product: Product }) {
       <div
         className="relative h-48 md:h-56 overflow-hidden bg-muted"
       >
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
         {/* Discount Badge */}
         {discount > 0 && (
           <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-xs font-bold">
