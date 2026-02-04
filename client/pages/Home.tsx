@@ -401,7 +401,7 @@ export default function Home() {
       </section>
 
       {/* All Products */}
-      <section id="products" className="py-16 md:py-24">
+      <section id="products" className="py-16 md:py-24 scroll-mt-16">
         <div className="container">
           <div className="mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
