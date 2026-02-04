@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCart, Search, Menu, X, LogIn, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useStore } from "@/context/StoreContext";
 
 interface HeaderProps {
   cartCount?: number;
