@@ -52,13 +52,23 @@ export default function Header({
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
-            >
-              {link.label}
-            </Link>
+            link.isHash ? (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href, link.isHash)}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
 
