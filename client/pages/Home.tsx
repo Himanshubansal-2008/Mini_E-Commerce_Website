@@ -423,7 +423,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-gradient-to-br from-primary to-secondary text-primary-foreground py-16 md:py-24"
+        className="bg-gradient-to-br from-primary to-secondary text-primary-foreground py-16 md:py-24 scroll-mt-16"
       >
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
