@@ -103,8 +103,13 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rounding-mode" 0;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
@@ -116,5 +121,53 @@
   code {
     overflow-x: auto;
     white-space: pre;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-card text-foreground font-semibold rounded-lg border border-border hover:bg-muted transition-all;
+  }
+
+  .card-shadow {
+    @apply shadow-sm hover:shadow-lg transition-all;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
