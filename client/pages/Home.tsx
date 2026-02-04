@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Trending Section */}
-      <section className="py-16 md:py-24">
+      <section id="trending" className="py-16 md:py-24 scroll-mt-16">
         <div className="container">
           <div className="mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-full mb-6">
