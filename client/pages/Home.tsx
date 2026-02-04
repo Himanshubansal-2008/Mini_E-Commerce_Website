@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AuthModal from "@/components/AuthModal";
+import { useStore, PRODUCTS } from "@/context/StoreContext";
 import {
   ShoppingCart,
   Heart,
@@ -10,101 +11,18 @@ import {
   Gift,
   Zap,
   Users,
+  Award,
+  Truck,
+  MessageCircle,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  category: "men" | "women" | "trending";
-  image: string;
-  rating: number;
-  reviews: number;
-  inStock: number;
+interface ProductCardProps {
+  product: typeof PRODUCTS[0];
 }
 
-const PRODUCTS: Product[] = [
-  {
-    id: "1",
-    name: "Classic College Hoodie",
-    price: 49.99,
-    originalPrice: 69.99,
-    category: "men",
-    image: "https://images.pexels.com/photos/7479813/pexels-photo-7479813.jpeg?auto=compress&cs=tinysrgb&w=600",
-    rating: 4.8,
-    reviews: 234,
-    inStock: 45,
-  },
-  {
-    id: "2",
-    name: "Vintage T-Shirt",
-    price: 24.99,
-    originalPrice: 34.99,
-    category: "men",
-    image: "https://images.pexels.com/photos/9898377/pexels-photo-9898377.png?auto=compress&cs=tinysrgb&w=600",
-    rating: 4.6,
-    reviews: 189,
-    inStock: 62,
-  },
-  {
-    id: "3",
-    name: "Campus Crewneck",
-    price: 39.99,
-    originalPrice: 59.99,
-    category: "women",
-    image: "https://images.pexels.com/photos/7479813/pexels-photo-7479813.jpeg?auto=compress&cs=tinysrgb&w=600",
-    rating: 4.9,
-    reviews: 312,
-    inStock: 28,
-  },
-  {
-    id: "4",
-    name: "Fitted College Tee",
-    price: 22.99,
-    originalPrice: 32.99,
-    category: "women",
-    image: "https://images.pexels.com/photos/5530440/pexels-photo-5530440.jpeg?auto=compress&cs=tinysrgb&w=600",
-    rating: 4.7,
-    reviews: 156,
-    inStock: 71,
-  },
-  {
-    id: "5",
-    name: "Oversized Logo Hoodie",
-    price: 54.99,
-    originalPrice: 74.99,
-    category: "trending",
-    image: "https://images.pexels.com/photos/7479813/pexels-photo-7479813.jpeg?auto=compress&cs=tinysrgb&w=600",
-    rating: 4.9,
-    reviews: 401,
-    inStock: 33,
-  },
-  {
-    id: "6",
-    name: "Embroidered Sweatshirt",
-    price: 59.99,
-    originalPrice: 79.99,
-    category: "trending",
-    image: "https://images.pexels.com/photos/9898377/pexels-photo-9898377.png?auto=compress&cs=tinysrgb&w=600",
-    rating: 5.0,
-    reviews: 267,
-    inStock: 19,
-  },
-];
-
-const COUPONS = [
-  { code: "WELCOME20", discount: "20%", description: "First order discount" },
-  {
-    code: "BUNDLE25",
-    discount: "25%",
-    description: "Buy 3+ items",
-  },
-  { code: "STUDENT15", discount: "15%", description: "Student exclusive" },
-];
-
-function ProductCard({ product }: { product: Product }) {
+function ProductCard({ product }: ProductCardProps) {
+  const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useStore();
   const [isFavorite, setIsFavorite] = useState(false);
   const discount = product.originalPrice
     ? Math.round(
@@ -112,12 +30,19 @@ function ProductCard({ product }: { product: Product }) {
       )
     : 0;
 
+  const handleFavorite = () => {
+    if (isFavorite) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
       {/* Image */}
-      <div
-        className="relative h-48 md:h-56 overflow-hidden bg-muted"
-      >
+      <div className="relative h-48 md:h-56 overflow-hidden bg-muted">
         <img
           src={product.image}
           alt={product.name}
@@ -132,13 +57,13 @@ function ProductCard({ product }: { product: Product }) {
 
         {/* Favorite Button */}
         <button
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={handleFavorite}
           className="absolute top-3 left-3 p-2 bg-white/90 rounded-full hover:bg-white transition-all"
         >
           <Heart
             className={cn(
               "w-4 h-4 transition-colors",
-              isFavorite
+              isFavorite || isInWishlist(product.id)
                 ? "fill-accent text-accent"
                 : "text-foreground/40 hover:text-foreground"
             )}
@@ -193,7 +118,10 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Add to Cart Button */}
-        <button className="w-full bg-primary text-primary-foreground font-semibold py-2.5 rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group/btn">
+        <button
+          onClick={() => addToCart(product, 1)}
+          className="w-full bg-primary text-primary-foreground font-semibold py-2.5 rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group/btn"
+        >
           <ShoppingCart className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
           Add to Cart
         </button>
@@ -202,14 +130,56 @@ function ProductCard({ product }: { product: Product }) {
   );
 }
 
+const COUPONS = [
+  { code: "WELCOME20", discount: "20%", description: "First order discount" },
+  {
+    code: "BUNDLE25",
+    discount: "25%",
+    description: "Buy 3+ items",
+  },
+  { code: "STUDENT15", discount: "15%", description: "Student exclusive" },
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Emma Johnson",
+    college: "State University",
+    image: "https://images.pexels.com/photos/5530440/pexels-photo-5530440.jpeg?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "CollegeCrew has the best quality hoodies! I've already bought 3 different colors. Amazing customer service too!",
+    rating: 5,
+  },
+  {
+    name: "Marcus Chen",
+    college: "Tech Institute",
+    image: "https://images.pexels.com/photos/9898377/pexels-photo-9898377.png?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "Perfect prices for a college student on a budget. The student discount made it even better!",
+    rating: 5,
+  },
+  {
+    name: "Sarah Williams",
+    college: "Central College",
+    image: "https://images.pexels.com/photos/7479813/pexels-photo-7479813.jpeg?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "Love the accessories! The water bottle and tote bag are super useful for campus life.",
+    rating: 4,
+  },
+];
+
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const trendingProducts = PRODUCTS.filter((p) => p.category === "trending");
+  const menProducts = PRODUCTS.filter((p) => p.category === "men");
+  const womenProducts = PRODUCTS.filter((p) => p.category === "women");
+  const accessoryProducts = PRODUCTS.filter((p) => p.category === "accessories");
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header
-        cartCount={3}
+        cartCount={0}
         isAuthenticated={isAuthenticated}
         onAuthClick={() => setAuthModalOpen(true)}
         onLogoutClick={() => setIsAuthenticated(false)}
@@ -296,7 +266,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PRODUCTS.filter((p) => p.category === "trending").map((product) => (
+            {trendingProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -369,7 +339,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PRODUCTS.filter((p) => p.category === "men").map((product) => (
+            {menProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -393,8 +363,86 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PRODUCTS.filter((p) => p.category === "women").map((product) => (
+            {womenProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Accessories Section */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+              <Award className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Must-Have Items</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              College Accessories
+            </h2>
+            <p className="text-foreground/60 text-lg">
+              Complete your college look with our essential accessories
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {accessoryProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Student Testimonials */}
+      <section className="bg-muted/30 py-16 md:py-24">
+        <div className="container">
+          <div className="mb-12 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
+              <MessageCircle className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium text-accent">Real Reviews</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What Students Are Saying
+            </h2>
+            <p className="text-foreground/60 text-lg">
+              Join thousands of happy college students
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((testimonial, idx) => (
+              <div
+                key={idx}
+                className="bg-card rounded-xl p-6 border border-border hover:shadow-lg transition-all"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {testimonial.college}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-1 mb-3">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </div>
+
+                <p className="text-foreground/70">"{testimonial.review}"</p>
+              </div>
             ))}
           </div>
         </div>
