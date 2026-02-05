@@ -2,6 +2,8 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AuthModal from "@/components/AuthModal";
+import ContactModal from "@/components/ContactModal";
+import LiveChatModal from "@/components/LiveChatModal";
 import { useStore, PRODUCTS } from "@/context/StoreContext";
 import {
   ShoppingCart,
