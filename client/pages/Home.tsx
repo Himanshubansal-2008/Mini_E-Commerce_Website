@@ -186,39 +186,61 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 py-12 md:py-24 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
+      <section className="relative bg-gradient-to-b from-primary/5 via-background to-secondary/5 py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
+        {/* Animated background elements */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
 
         <div className="container flex flex-col items-center justify-center text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
-            <Zap className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-accent">New Collection</span>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-8 border border-accent/30 backdrop-blur">
+            <Zap className="w-4 h-4 text-accent animate-bounce" />
+            <span className="text-sm font-bold text-accent">New Collection Live</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Your College <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Style</span>,
+          {/* Main Heading */}
+          <h1 className="text-5xl md:text-7xl font-black text-foreground mb-6 leading-tight tracking-tight slide-up">
+            Your College <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-pulse">Style</span>,
             <br />
-            Your Rules
+            Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Rules</span>
           </h1>
 
-          <p className="text-lg text-foreground/70 max-w-2xl mb-8">
-            Discover the finest college merchandise designed for students who want to stand out. Premium quality, incredible prices.
+          {/* Subheading */}
+          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mb-10 leading-relaxed font-medium">
+            Discover premium college merchandise designed for students who want to stand out. Unbeatable quality, incredible prices.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-3.5 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl"
+              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg"
             >
               Shop Now
             </button>
             <button
               onClick={() => setAuthModalOpen(true)}
-              className="px-8 py-3.5 bg-card text-foreground font-semibold rounded-lg border border-border hover:bg-muted transition-all"
+              className="px-8 py-4 bg-white/80 backdrop-blur text-foreground font-bold rounded-xl border-2 border-primary/30 hover:bg-white hover:border-primary/50 transition-all duration-200 text-base md:text-lg"
             >
-              {isAuthenticated ? "View Account" : "Sign Up"}
+              {isAuthenticated ? "View Account" : "Sign Up Free"}
             </button>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-primary">50k+</div>
+              <p className="text-xs md:text-sm text-foreground/60 mt-1">Happy Students</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-secondary">500+</div>
+              <p className="text-xs md:text-sm text-foreground/60 mt-1">Products</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-black text-accent">100%</div>
+              <p className="text-xs md:text-sm text-foreground/60 mt-1">Authentic</p>
+            </div>
           </div>
         </div>
       </section>
