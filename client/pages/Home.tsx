@@ -325,15 +325,15 @@ export default function Home() {
       {/* Men's Collection */}
       <section id="men" className="py-16 md:py-24 scroll-mt-16">
         <div className="container">
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-              <Users className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">For Him</span>
+          <div className="mb-16">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full mb-6 border border-primary/30 backdrop-blur">
+              <Users className="w-4 h-4 text-primary animate-bounce" />
+              <span className="text-sm font-bold text-primary">For Him</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Men's Collection
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              Men's <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Collection</span>
             </h2>
-            <p className="text-foreground/60 text-lg">
+            <p className="text-foreground/60 text-lg font-medium">
               Premium hoodies and tees designed for the modern college guy
             </p>
           </div>
