@@ -451,12 +451,12 @@ export default function Home() {
       {/* All Products */}
       <section id="products" className="py-16 md:py-24 scroll-mt-16">
         <div className="container">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              All Products
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              Browse All <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Products</span>
             </h2>
-            <p className="text-foreground/60 text-lg">
-              Browse our complete catalog of college merchandise
+            <p className="text-foreground/60 text-lg font-medium">
+              Explore our complete catalog of college merchandise
             </p>
           </div>
 
