@@ -226,4 +226,19 @@
       scroll-behavior: smooth;
     }
   }
+
+  /* Animation delays */
+  .delay-700 {
+    animation-delay: 0.7s;
+  }
+
+  /* Bounce animation */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-0.5rem); }
+  }
+
+  .animate-bounce {
+    animation: bounce 2s infinite;
+  }
 }
