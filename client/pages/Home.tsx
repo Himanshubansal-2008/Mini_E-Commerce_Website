@@ -471,23 +471,27 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-gradient-to-br from-primary to-secondary text-primary-foreground py-16 md:py-24 scroll-mt-16"
+        className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground py-16 md:py-28 scroll-mt-16 relative overflow-hidden"
       >
+        {/* Decorative elements */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl -z-10" />
+
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black mb-6">
               Questions? We're Here to Help
             </h2>
-            <p className="text-lg mb-8 opacity-90">
+            <p className="text-lg md:text-xl mb-10 font-medium opacity-95">
               Have questions about our products or need support? Get in touch
-              with our friendly team.
+              with our friendly team and we'll be happy to assist you.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-6 py-3 bg-primary-foreground text-primary font-semibold rounded-lg hover:bg-primary-foreground/90 transition-all">
+              <button className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg">
                 Contact Us
               </button>
-              <button className="px-6 py-3 border-2 border-primary-foreground text-primary-foreground font-semibold rounded-lg hover:bg-primary-foreground/10 transition-all">
+              <button className="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-200 text-base md:text-lg backdrop-blur">
                 Live Chat
               </button>
             </div>
