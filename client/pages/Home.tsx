@@ -245,29 +245,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="bg-muted/30 py-8 md:py-12">
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
-            <div>
-              <div className="text-2xl md:text-3xl font-bold text-primary">50k+</div>
-              <p className="text-sm text-foreground/60 mt-1">Happy Students</p>
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold text-secondary">500+</div>
-              <p className="text-sm text-foreground/60 mt-1">Products</p>
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold text-accent">24/7</div>
-              <p className="text-sm text-foreground/60 mt-1">Support</p>
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold text-primary">100%</div>
-              <p className="text-sm text-foreground/60 mt-1">Authentic</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Trending Section */}
       <section id="trending" className="py-16 md:py-24 scroll-mt-16">
