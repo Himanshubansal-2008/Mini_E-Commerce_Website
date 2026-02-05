@@ -40,13 +40,13 @@ function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all group">
+    <div className="stagger-item bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group product-card-hover border border-border/50 hover:border-primary/50">
       {/* Image */}
-      <div className="relative h-48 md:h-56 overflow-hidden bg-muted">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-muted to-muted/50">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
         />
         {/* Discount Badge */}
         {discount > 0 && (
