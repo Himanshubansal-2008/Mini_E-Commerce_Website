@@ -273,18 +273,18 @@ export default function Home() {
       </section>
 
       {/* Coupons Section */}
-      <section className="bg-gradient-to-r from-primary/5 to-secondary/5 py-16 md:py-24">
+      <section className="bg-gradient-to-b from-background via-accent/5 to-background py-16 md:py-24">
         <div className="container">
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
-              <Gift className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-accent">Save More</span>
+          <div className="mb-16 text-center">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-6 border border-accent/30 backdrop-blur">
+              <Gift className="w-4 h-4 text-accent animate-bounce" />
+              <span className="text-sm font-bold text-accent">Exclusive Offers</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Exclusive Coupons
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              Limited Time <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Coupons</span>
             </h2>
-            <p className="text-foreground/60 text-lg">
-              Use these codes at checkout for instant discounts
+            <p className="text-foreground/60 text-lg font-medium">
+              Unlock massive savings with our exclusive discount codes
             </p>
           </div>
 
@@ -292,26 +292,27 @@ export default function Home() {
             {COUPONS.map((coupon, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-6 md:p-8 border-2 border-dashed border-border hover:border-primary transition-colors group cursor-pointer"
+                className="stagger-item bg-gradient-to-br from-white to-accent/5 rounded-2xl p-8 border-2 border-accent/20 hover:border-accent/80 transition-all duration-300 group cursor-pointer shadow-md hover:shadow-xl transform hover:-translate-y-2"
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-6">
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">
+                    <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2">
                       Save up to
                     </p>
-                    <h3 className="text-4xl font-bold text-accent group-hover:scale-110 transition-transform origin-left">
+                    <h3 className="text-5xl font-black text-accent group-hover:scale-110 transition-transform origin-left duration-300">
                       {coupon.discount}
                     </h3>
                   </div>
+                  <div className="text-4xl">🎉</div>
                 </div>
-                <p className="text-foreground/70 font-medium mb-4">
+                <p className="text-foreground/70 font-bold text-lg mb-6">
                   {coupon.description}
                 </p>
-                <div className="bg-muted rounded-lg p-3 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <p className="text-xs text-muted-foreground group-hover:text-primary-foreground/70">
+                <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-xl p-4 group-hover:from-accent group-hover:to-primary transition-all duration-300 group-hover:text-white border border-accent/20">
+                  <p className="text-xs font-bold text-muted-foreground group-hover:text-white/70 uppercase tracking-widest mb-1">
                     Code
                   </p>
-                  <p className="text-lg font-bold font-mono">
+                  <p className="text-2xl font-black font-mono group-hover:text-white">
                     {coupon.code}
                   </p>
                 </div>
