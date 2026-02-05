@@ -77,16 +77,16 @@ function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
+      <div className="p-5 flex flex-col h-full">
+        <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
           {product.category}
         </p>
-        <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+        <h3 className="font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 text-base">
           {product.name}
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-1 mb-3">
+        <div className="flex items-center gap-2 mb-3">
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star
@@ -95,23 +95,23 @@ function ProductCard({ product }: ProductCardProps) {
                   "w-3 h-3",
                   i < Math.floor(product.rating)
                     ? "fill-yellow-400 text-yellow-400"
-                    : "text-gray-300"
+                    : "text-gray-200"
                 )}
               />
             ))}
           </div>
-          <span className="text-xs text-muted-foreground">
+          <span className="text-xs text-muted-foreground font-medium">
             ({product.reviews})
           </span>
         </div>
 
         {/* Price */}
-        <div className="flex items-baseline gap-2 mb-4">
-          <span className="text-xl font-bold text-foreground">
+        <div className="flex items-baseline gap-2 mb-4 mt-auto">
+          <span className="text-2xl font-bold text-primary">
             ${product.price.toFixed(2)}
           </span>
           {product.originalPrice && (
-            <span className="text-sm text-muted-foreground line-through">
+            <span className="text-sm text-muted-foreground line-through font-medium">
               ${product.originalPrice.toFixed(2)}
             </span>
           )}
@@ -120,9 +120,9 @@ function ProductCard({ product }: ProductCardProps) {
         {/* Add to Cart Button */}
         <button
           onClick={() => addToCart(product, 1)}
-          className="w-full bg-primary text-primary-foreground font-semibold py-2.5 rounded-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group/btn"
+          className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 group/btn"
         >
-          <ShoppingCart className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
+          <ShoppingCart className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
           Add to Cart
         </button>
       </div>
