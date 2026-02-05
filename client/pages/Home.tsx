@@ -373,15 +373,15 @@ export default function Home() {
       {/* Accessories Section */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-              <Award className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Must-Have Items</span>
+          <div className="mb-16">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full mb-6 border border-primary/30 backdrop-blur">
+              <Award className="w-4 h-4 text-primary animate-bounce" />
+              <span className="text-sm font-bold text-primary">Must-Have Items</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              College Accessories
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              College <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Accessories</span>
             </h2>
-            <p className="text-foreground/60 text-lg">
+            <p className="text-foreground/60 text-lg font-medium">
               Complete your college look with our essential accessories
             </p>
           </div>
