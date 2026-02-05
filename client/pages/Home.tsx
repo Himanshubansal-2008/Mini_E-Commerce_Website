@@ -395,17 +395,17 @@ export default function Home() {
       </section>
 
       {/* Student Testimonials */}
-      <section className="bg-muted/30 py-16 md:py-24">
+      <section className="bg-gradient-to-b from-background to-accent/3 py-16 md:py-24">
         <div className="container">
-          <div className="mb-12 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full mb-6">
-              <MessageCircle className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-accent">Real Reviews</span>
+          <div className="mb-16 text-center">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-6 border border-accent/30 backdrop-blur">
+              <MessageCircle className="w-4 h-4 text-accent animate-bounce" />
+              <span className="text-sm font-bold text-accent">Real Reviews</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              What Students Are Saying
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+              What Students Are <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">Saying</span>
             </h2>
-            <p className="text-foreground/60 text-lg">
+            <p className="text-foreground/60 text-lg font-medium">
               Join thousands of happy college students
             </p>
           </div>
