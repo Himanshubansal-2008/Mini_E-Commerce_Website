@@ -172,6 +172,8 @@ const TESTIMONIALS = [
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [liveChatOpen, setLiveChatOpen] = useState(false);
 
   const trendingProducts = PRODUCTS.filter((p) => p.category === "trending");
   const menProducts = PRODUCTS.filter((p) => p.category === "men");
