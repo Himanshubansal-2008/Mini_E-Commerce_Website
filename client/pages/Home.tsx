@@ -25,6 +25,7 @@ interface ProductCardProps {
 function ProductCard({ product }: ProductCardProps) {
   const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useStore();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   const discount = product.originalPrice
     ? Math.round(
         ((product.originalPrice - product.price) / product.originalPrice) * 100
@@ -38,6 +39,23 @@ function ProductCard({ product }: ProductCardProps) {
       addToWishlist(product);
     }
     setIsFavorite(!isFavorite);
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    setQuantity(1); // Reset quantity after adding
+  };
+
+  const incrementQuantity = () => {
+    if (quantity < product.inStock) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
