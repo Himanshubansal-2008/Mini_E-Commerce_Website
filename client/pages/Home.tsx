@@ -103,7 +103,7 @@ function ProductCard({ product }: ProductCardProps) {
             ))}
           </div>
           <span className="text-xs text-muted-foreground font-medium">
-            ({product.reviews})
+            {product.rating.toFixed(1)}/5
           </span>
         </div>
 
