@@ -78,16 +78,16 @@ function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col h-full">
+      <div className="p-5 flex flex-col">
         <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
           {product.category}
         </p>
-        <h3 className="font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 text-base">
+        <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 text-base">
           {product.name}
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex items-center gap-2 mb-4">
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star
@@ -106,32 +106,28 @@ function ProductCard({ product }: ProductCardProps) {
           </span>
         </div>
 
-        {/* Price */}
-        <div className="mt-auto mb-4">
-          <div className="mb-2">
-            <div className="text-sm text-muted-foreground font-medium mb-1">Price:</div>
-            <div className="text-2xl font-bold text-primary">
-              ${product.price.toFixed(2)}
-            </div>
-          </div>
+        {/* Price Section */}
+        <div className="mb-3">
+          <p className="text-xs text-muted-foreground font-medium mb-1">Price:</p>
+          <p className="text-2xl font-bold text-primary mb-2">
+            ${product.price.toFixed(2)}
+          </p>
           {product.originalPrice && (
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground line-through">
-                ${product.originalPrice.toFixed(2)}
-              </span>
-              <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded">
+            <p className="text-xs text-muted-foreground">
+              <span className="line-through">${product.originalPrice.toFixed(2)}</span>
+              <span className="ml-2 font-bold text-accent">
                 Save ${(product.originalPrice - product.price).toFixed(2)}
               </span>
-            </div>
+            </p>
           )}
         </div>
 
         {/* Add to Cart Button */}
         <button
           onClick={() => addToCart(product, 1)}
-          className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 group/btn"
+          className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
         >
-          <ShoppingCart className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
+          <ShoppingCart className="w-4 h-4" />
           Add to Cart
         </button>
       </div>
