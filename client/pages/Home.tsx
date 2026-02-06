@@ -162,8 +162,7 @@ function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center gap-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-2 border border-primary/30">
             <button
               onClick={decrementQuantity}
-              disabled={cartQuantity <= 1}
-              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 transition-colors"
             >
               −
             </button>
