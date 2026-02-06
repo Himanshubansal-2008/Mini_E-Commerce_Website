@@ -23,14 +23,18 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
-  const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useStore();
+  const { cart, addToCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist } = useStore();
   const [isFavorite, setIsFavorite] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+
   const discount = product.originalPrice
     ? Math.round(
         ((product.originalPrice - product.price) / product.originalPrice) * 100
       )
     : 0;
+
+  // Check if product is in cart
+  const cartItem = cart.find((item) => item.id === product.id);
+  const cartQuantity = cartItem?.quantity || 0;
 
   const handleFavorite = () => {
     if (isFavorite) {
@@ -42,19 +46,18 @@ function ProductCard({ product }: ProductCardProps) {
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
-    setQuantity(1); // Reset quantity after adding
+    addToCart(product, 1);
   };
 
   const incrementQuantity = () => {
-    if (quantity < product.inStock) {
-      setQuantity(quantity + 1);
+    if (cartQuantity < product.inStock) {
+      updateCartQuantity(product.id, cartQuantity + 1);
     }
   };
 
   const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (cartQuantity > 1) {
+      updateCartQuantity(product.id, cartQuantity - 1);
     }
   };
 
