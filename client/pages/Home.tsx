@@ -107,17 +107,16 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Price */}
-        <div className="flex flex-col gap-2 mb-4 mt-auto">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-muted-foreground">Price:</span>
-            <span className="text-2xl font-bold text-primary">
+        <div className="mt-auto mb-4">
+          <div className="mb-2">
+            <div className="text-sm text-muted-foreground font-medium mb-1">Price:</div>
+            <div className="text-2xl font-bold text-primary">
               ${product.price.toFixed(2)}
-            </span>
+            </div>
           </div>
           {product.originalPrice && (
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-muted-foreground">Original:</span>
-              <span className="text-sm text-muted-foreground line-through font-medium">
+              <span className="text-xs text-muted-foreground line-through">
                 ${product.originalPrice.toFixed(2)}
               </span>
               <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded">
