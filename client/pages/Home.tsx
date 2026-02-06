@@ -24,7 +24,7 @@ interface ProductCardProps {
 
 function ProductCard({ product }: ProductCardProps) {
   const store = useStore();
-  const { cart = [], addToCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist } = store;
+  const { cart = [], addToCart, removeFromCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist } = store;
   const [isFavorite, setIsFavorite] = useState(false);
 
   const discount = product.originalPrice
