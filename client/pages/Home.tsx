@@ -23,7 +23,8 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product }: ProductCardProps) {
-  const { cart, addToCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist } = useStore();
+  const store = useStore();
+  const { cart = [], addToCart, updateCartQuantity, addToWishlist, removeFromWishlist, isInWishlist } = store;
   const [isFavorite, setIsFavorite] = useState(false);
 
   const discount = product.originalPrice
@@ -33,7 +34,7 @@ function ProductCard({ product }: ProductCardProps) {
     : 0;
 
   // Check if product is in cart
-  const cartItem = cart.find((item) => item.id === product.id);
+  const cartItem = cart?.find((item) => item.id === product.id);
   const cartQuantity = cartItem?.quantity || 0;
 
   const handleFavorite = () => {
