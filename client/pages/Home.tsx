@@ -143,38 +143,38 @@ function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        {/* Quantity and Add to Cart */}
-        <div className="space-y-3">
-          {/* Quantity Selector */}
-          <div className="flex items-center gap-2 bg-muted rounded-lg p-2">
-            <button
-              onClick={decrementQuantity}
-              disabled={quantity <= 1}
-              className="flex-1 py-2 text-sm font-bold rounded hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              −
-            </button>
-            <span className="flex-1 text-center font-bold text-lg">
-              {quantity}
-            </span>
-            <button
-              onClick={incrementQuantity}
-              disabled={quantity >= product.inStock}
-              className="flex-1 py-2 text-sm font-bold rounded hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              +
-            </button>
-          </div>
-
-          {/* Add to Cart Button */}
+        {/* Add to Cart or Quantity */}
+        {cartQuantity === 0 ? (
+          // Not in cart - show Add to Cart button
           <button
             onClick={handleAddToCart}
             className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
           >
             <ShoppingCart className="w-4 h-4" />
-            Add to Cart ({quantity})
+            Add to Cart
           </button>
-        </div>
+        ) : (
+          // In cart - show quantity controls
+          <div className="flex items-center gap-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-2 border border-primary/30">
+            <button
+              onClick={decrementQuantity}
+              disabled={cartQuantity <= 1}
+              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              −
+            </button>
+            <span className="flex-1 text-center font-bold text-lg text-primary">
+              {cartQuantity}
+            </span>
+            <button
+              onClick={incrementQuantity}
+              disabled={cartQuantity >= product.inStock}
+              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              +
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
