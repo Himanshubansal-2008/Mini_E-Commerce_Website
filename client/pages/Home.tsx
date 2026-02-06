@@ -57,7 +57,10 @@ function ProductCard({ product }: ProductCardProps) {
   };
 
   const decrementQuantity = () => {
-    if (cartQuantity > 1) {
+    if (cartQuantity <= 1) {
+      // Remove from cart if quantity is 1 or less
+      removeFromCart(product.id);
+    } else {
       updateCartQuantity(product.id, cartQuantity - 1);
     }
   };
