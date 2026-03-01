@@ -9,6 +9,7 @@ interface HeaderProps {
   isAuthenticated?: boolean;
   onAuthClick?: () => void;
   onLogoutClick?: () => void;
+  userName?: string | null;
 }
 
 export default function Header({
@@ -16,6 +17,7 @@ export default function Header({
   isAuthenticated = false,
   onAuthClick,
   onLogoutClick,
+  userName,
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -110,22 +112,28 @@ export default function Header({
           </Link>
 
           {/* Auth Button - Desktop */}
-          <button
-            onClick={isAuthenticated ? onLogoutClick : onAuthClick}
-            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all"
-          >
-            {isAuthenticated ? (
-              <>
+          {isAuthenticated && userName ? (
+            <div className="hidden md:flex items-center gap-4 px-4 py-2">
+              <span className="text-sm font-medium text-foreground">
+                Hello, {userName}
+              </span>
+              <button
+                onClick={onLogoutClick}
+                className="flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+              >
                 <LogOut className="w-4 h-4" />
                 <span>Logout</span>
-              </>
-            ) : (
-              <>
-                <LogIn className="w-4 h-4" />
-                <span>Sign In</span>
-              </>
-            )}
-          </button>
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={onAuthClick}
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all"
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Sign In</span>
+            </button>
+          )}
 
           {/* Mobile Menu Button */}
           <button
@@ -182,24 +190,32 @@ export default function Header({
             ))}
 
             {/* Mobile Auth Button */}
-            <button
-              onClick={() => {
-                if (isAuthenticated) {
-                  onLogoutClick?.();
-                } else {
+            {isAuthenticated && userName ? (
+              <div className="mt-2 pt-2 border-t border-border">
+                <p className="text-sm font-medium text-foreground mb-3">
+                  Hello, {userName}
+                </p>
+                <button
+                  onClick={() => {
+                    onLogoutClick?.();
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full px-4 py-2 rounded-lg font-medium transition-all bg-muted text-foreground hover:bg-muted/80"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
                   onAuthClick?.();
-                }
-                setIsMenuOpen(false);
-              }}
-              className={cn(
-                "w-full px-4 py-2 rounded-lg font-medium transition-all mt-2",
-                isAuthenticated
-                  ? "bg-muted text-foreground hover:bg-muted/80"
-                  : "bg-primary text-primary-foreground hover:bg-primary/90"
-              )}
-            >
-              {isAuthenticated ? "Logout" : "Sign In"}
-            </button>
+                  setIsMenuOpen(false);
+                }}
+                className="w-full px-4 py-2 rounded-lg font-medium transition-all mt-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                Sign In
+              </button>
+            )}
           </div>
         </div>
       )}

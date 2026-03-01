@@ -3,7 +3,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AuthModal from "@/components/AuthModal";
 import ContactModal from "@/components/ContactModal";
-import LiveChatModal from "@/components/LiveChatModal";
 import { useStore, PRODUCTS } from "@/context/StoreContext";
 import {
   ShoppingCart,
@@ -16,7 +15,7 @@ import {
   Award,
   MessageCircle,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatINRPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: (typeof PRODUCTS)[0];
@@ -145,15 +144,15 @@ function ProductCard({ product }: ProductCardProps) {
             Price:
           </p>
           <p className="text-2xl font-bold text-primary mb-2">
-            ${product.price.toFixed(2)}
+            {formatINRPrice(product.price)}
           </p>
           {product.originalPrice && (
             <p className="text-xs text-muted-foreground">
               <span className="line-through">
-                ${product.originalPrice.toFixed(2)}
+                {formatINRPrice(product.originalPrice)}
               </span>
               <span className="ml-2 font-bold text-accent">
-                Save ${(product.originalPrice - product.price).toFixed(2)}
+                Save {formatINRPrice(product.originalPrice - product.price)}
               </span>
             </p>
           )}
@@ -212,7 +211,7 @@ const TESTIMONIALS = [
     image:
       "https://images.pexels.com/photos/5530440/pexels-photo-5530440.jpeg?auto=compress&cs=tinysrgb&w=200",
     review:
-      "CollegeCrew has the best quality hoodies! I've already bought 3 different colors. Amazing customer service too!",
+      "The quality is outstanding! I've already bought 3 different colors. Amazing customer service too!",
     rating: 5,
   },
   {
@@ -221,7 +220,7 @@ const TESTIMONIALS = [
     image:
       "https://images.pexels.com/photos/9898377/pexels-photo-9898377.png?auto=compress&cs=tinysrgb&w=200",
     review:
-      "Perfect prices for a college student on a budget. The student discount made it even better!",
+      "Perfect prices and excellent quality. The student discount made my purchase even better!",
     rating: 5,
   },
   {
@@ -230,16 +229,42 @@ const TESTIMONIALS = [
     image:
       "https://images.pexels.com/photos/7479813/pexels-photo-7479813.jpeg?auto=compress&cs=tinysrgb&w=200",
     review:
-      "Love the accessories! The water bottle and tote bag are super useful for campus life.",
+      "Love the accessories! The water bottle and tote bag are super useful for daily life.",
+    rating: 4,
+  },
+  {
+    name: "Alex Rodriguez",
+    college: "Metro University",
+    image:
+      "https://images.pexels.com/photos/9900333/pexels-photo-9900333.jpeg?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "Fantastic selection and the delivery was super fast. Will definitely order again soon!",
+    rating: 5,
+  },
+  {
+    name: "Jessica Liu",
+    college: "West Coast Academy",
+    image:
+      "https://images.pexels.com/photos/9838766/pexels-photo-9838766.jpeg?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "The hoodies are so comfortable and stylish. Best purchase I've made all semester!",
+    rating: 5,
+  },
+  {
+    name: "David Thompson",
+    college: "Northern College",
+    image:
+      "https://images.pexels.com/photos/10104320/pexels-photo-10104320.jpeg?auto=compress&cs=tinysrgb&w=200",
+    review:
+      "Great value for money. The backpack is perfect for campus and travel. Highly recommend!",
     rating: 4,
   },
 ];
 
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [liveChatOpen, setLiveChatOpen] = useState(false);
+  const { userName, setUserName } = useStore();
 
   const trendingProducts = PRODUCTS.filter((p) => p.category === "trending");
   const menProducts = PRODUCTS.filter((p) => p.category === "men");
@@ -248,47 +273,52 @@ export default function Home() {
     (p) => p.category === "accessories",
   );
 
+  const handleLogout = () => {
+    setUserName(null);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header
         cartCount={0}
-        isAuthenticated={isAuthenticated}
+        isAuthenticated={!!userName}
+        userName={userName}
         onAuthClick={() => setAuthModalOpen(true)}
-        onLogoutClick={() => setIsAuthenticated(false)}
+        onLogoutClick={handleLogout}
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-primary/5 via-background to-secondary/5 py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
+      <section className="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
         {/* Animated background elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse -z-10" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl -z-10" />
 
         <div className="container flex flex-col items-center justify-center text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-8 border border-accent/30 backdrop-blur">
-            <Zap className="w-4 h-4 text-accent animate-bounce" />
-            <span className="text-sm font-bold text-accent">
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full mb-8 border border-yellow-400/50 backdrop-blur">
+            <Zap className="w-4 h-4 text-yellow-300 animate-bounce" />
+            <span className="text-sm font-bold text-yellow-300">
               New Collection Live
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-black text-foreground mb-6 leading-tight tracking-tight slide-up">
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight slide-up">
             Your College{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent animate-pulse">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 animate-pulse">
               Style
             </span>
             ,
             <br />
             Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
               Rules
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mb-10 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed font-medium">
             Discover premium college merchandise designed for students who want
             to stand out. Unbeatable quality, incredible prices.
           </p>
@@ -301,13 +331,13 @@ export default function Home() {
                   .getElementById("products")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg"
             >
               Shop Now
             </button>
             <button
               onClick={() => setAuthModalOpen(true)}
-              className="px-8 py-4 bg-white/80 backdrop-blur text-foreground font-bold rounded-xl border-2 border-primary/30 hover:bg-white hover:border-primary/50 transition-all duration-200 text-base md:text-lg"
+              className="px-8 py-4 bg-white/20 backdrop-blur text-white font-bold rounded-xl border-2 border-white/50 hover:bg-white/30 hover:border-white transition-all duration-200 text-base md:text-lg"
             >
               {isAuthenticated ? "View Account" : "Sign Up Free"}
             </button>
@@ -316,26 +346,26 @@ export default function Home() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-primary">
+              <div className="text-3xl md:text-4xl font-black text-blue-400">
                 50k+
               </div>
-              <p className="text-xs md:text-sm text-foreground/60 mt-1">
+              <p className="text-xs md:text-sm text-white/70 mt-1">
                 Happy Students
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-secondary">
+              <div className="text-3xl md:text-4xl font-black text-purple-400">
                 500+
               </div>
-              <p className="text-xs md:text-sm text-foreground/60 mt-1">
+              <p className="text-xs md:text-sm text-white/70 mt-1">
                 Products
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-accent">
+              <div className="text-3xl md:text-4xl font-black text-pink-400">
                 100%
               </div>
-              <p className="text-xs md:text-sm text-foreground/60 mt-1">
+              <p className="text-xs md:text-sm text-white/70 mt-1">
                 Authentic
               </p>
             </div>
@@ -543,23 +573,7 @@ export default function Home() {
                 key={idx}
                 className="bg-card rounded-xl p-6 border border-border hover:shadow-lg transition-all"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-foreground">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.college}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-1 mb-3">
+                <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
@@ -568,7 +582,16 @@ export default function Home() {
                   ))}
                 </div>
 
-                <p className="text-foreground/70">"{testimonial.review}"</p>
+                <p className="text-foreground/70 mb-4">"{testimonial.review}"</p>
+
+                <div>
+                  <h4 className="font-semibold text-foreground">
+                    {testimonial.name}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.college}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -617,14 +640,12 @@ export default function Home() {
               with our friendly team and we'll be happy to assist you.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg">
-                Contact Us
-              </button>
-              <button className="px-8 py-4 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-200 text-base md:text-lg backdrop-blur">
-                Live Chat
-              </button>
-            </div>
+            <button
+              onClick={() => setContactModalOpen(true)}
+              className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg"
+            >
+              Contact Us
+            </button>
           </div>
         </div>
       </section>
@@ -636,8 +657,13 @@ export default function Home() {
         isOpen={authModalOpen}
         onClose={() => {
           setAuthModalOpen(false);
-          setIsAuthenticated(true);
         }}
+      />
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
       />
     </div>
   );

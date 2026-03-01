@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X, Mail, Lock, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useStore } from "@/context/StoreContext";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -14,12 +15,20 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
     password: "",
     name: "",
   });
+  const { setUserName } = useStore();
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle auth logic here
+    if (isSignUp && formData.name) {
+      setUserName(formData.name);
+    } else if (!isSignUp) {
+      // For sign in, use email name or keep existing
+      const emailName = formData.email.split("@")[0];
+      setUserName(emailName);
+    }
     onClose();
   };
 

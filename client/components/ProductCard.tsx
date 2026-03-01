@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ShoppingCart, Heart, Star } from "lucide-react";
 import { useStore, PRODUCTS } from "@/context/StoreContext";
-import { cn } from "@/lib/utils";
+import { cn, formatINRPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: typeof PRODUCTS[0];
@@ -96,17 +96,17 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold text-muted-foreground">Price:</span>
             <span className="text-2xl font-bold text-primary">
-              ${product.price.toFixed(2)}
+              {formatINRPrice(product.price)}
             </span>
           </div>
           {product.originalPrice && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="text-xs font-semibold text-muted-foreground">Original:</span>
               <span className="text-sm text-muted-foreground line-through font-medium">
-                ${product.originalPrice.toFixed(2)}
+                {formatINRPrice(product.originalPrice)}
               </span>
               <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-1 rounded">
-                Save ${(product.originalPrice - product.price).toFixed(2)}
+                Save {formatINRPrice(product.originalPrice - product.price)}
               </span>
             </div>
           )}

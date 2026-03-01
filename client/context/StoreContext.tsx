@@ -24,6 +24,7 @@ interface StoreContextType {
   cart: CartItem[];
   wishlist: Product[];
   searchQuery: string;
+  userName: string | null;
   addToCart: (product: Product, quantity: number, size?: string, color?: string) => void;
   removeFromCart: (productId: string) => void;
   updateCartQuantity: (productId: string, quantity: number) => void;
@@ -32,6 +33,7 @@ interface StoreContextType {
   isInWishlist: (productId: string) => boolean;
   setSearchQuery: (query: string) => void;
   getSearchResults: () => Product[];
+  setUserName: (name: string | null) => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -40,7 +42,7 @@ export const PRODUCTS: Product[] = [
   // Apparel
   {
     id: "1",
-    name: "Classic College Hoodie",
+    name: "Classic Hoodie",
     price: 49.99,
     originalPrice: 69.99,
     category: "men",
@@ -48,7 +50,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviews: 234,
     inStock: 8,
-    description: "Premium college hoodie with embroidered logo",
+    description: "Premium hoodie with embroidered logo",
   },
   {
     id: "2",
@@ -60,7 +62,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     reviews: 189,
     inStock: 9,
-    description: "Vintage style college t-shirt",
+    description: "Vintage style t-shirt",
   },
   {
     id: "3",
@@ -76,7 +78,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "4",
-    name: "Fitted College Tee",
+    name: "Fitted Tee",
     price: 22.99,
     originalPrice: 32.99,
     category: "women",
@@ -84,7 +86,7 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     reviews: 156,
     inStock: 10,
-    description: "Fitted t-shirt perfect for college life",
+    description: "Fitted t-shirt perfect for casual life",
   },
   {
     id: "5",
@@ -160,7 +162,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "15",
-    name: "College USB Hub",
+    name: "USB Hub",
     price: 19.99,
     originalPrice: 29.99,
     category: "accessories",
@@ -186,7 +188,7 @@ export const PRODUCTS: Product[] = [
   // Bottles & Beverages
   {
     id: "17",
-    name: "Insulated College Water Bottle",
+    name: "Insulated Water Bottle",
     price: 24.99,
     originalPrice: 34.99,
     category: "accessories",
@@ -198,7 +200,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "18",
-    name: "College Stainless Steel Thermos",
+    name: "Stainless Steel Thermos",
     price: 29.99,
     originalPrice: 39.99,
     category: "accessories",
@@ -210,14 +212,14 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "19",
-    name: "College Coffee Mug Set",
+    name: "Coffee Mug Set",
     price: 17.99,
     category: "accessories",
     image: "https://images.pexels.com/photos/10463649/pexels-photo-10463649.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 145,
     inStock: 8,
-    description: "Set of 2 ceramic college-themed coffee mugs with college logo",
+    description: "Set of 2 ceramic coffee mugs with elegant design",
   },
   {
     id: "20",
@@ -235,7 +237,7 @@ export const PRODUCTS: Product[] = [
   // Shoes & Footwear
   {
     id: "21",
-    name: "College Campus Sneakers",
+    name: "Campus Sneakers",
     price: 69.99,
     originalPrice: 99.99,
     category: "accessories",
@@ -243,11 +245,11 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviews: 234,
     inStock: 8,
-    description: "Comfortable sneakers with college branding - perfect for campus walking",
+    description: "Comfortable sneakers with branding - perfect for campus walking",
   },
   {
     id: "22",
-    name: "College Casual Shoes",
+    name: "Casual Shoes",
     price: 54.99,
     originalPrice: 74.99,
     category: "accessories",
@@ -255,11 +257,11 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     reviews: 167,
     inStock: 6,
-    description: "Versatile casual shoes for everyday college life",
+    description: "Versatile casual shoes for everyday life",
   },
   {
     id: "23",
-    name: "College Slippers",
+    name: "Soft Slippers",
     price: 22.99,
     originalPrice: 32.99,
     category: "accessories",
@@ -267,13 +269,13 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviews: 156,
     inStock: 10,
-    description: "Comfy dorm slippers with college logo - perfect for cozy nights",
+    description: "Comfy dorm slippers - perfect for cozy nights",
   },
 
   // Accessories & Campus Essentials
   {
     id: "7",
-    name: "College Baseball Cap",
+    name: "Baseball Cap",
     price: 19.99,
     originalPrice: 29.99,
     category: "accessories",
@@ -281,11 +283,11 @@ export const PRODUCTS: Product[] = [
     rating: 4.5,
     reviews: 98,
     inStock: 9,
-    description: "Classic baseball cap with embroidered college logo",
+    description: "Classic baseball cap with embroidered logo",
   },
   {
     id: "8",
-    name: "College Water Bottle",
+    name: "Water Bottle",
     price: 14.99,
     originalPrice: 19.99,
     category: "accessories",
@@ -293,11 +295,11 @@ export const PRODUCTS: Product[] = [
     rating: 4.7,
     reviews: 142,
     inStock: 10,
-    description: "Reusable stainless steel college water bottle",
+    description: "Reusable stainless steel water bottle",
   },
   {
     id: "9",
-    name: "College Tote Bag",
+    name: "Tote Bag",
     price: 24.99,
     category: "accessories",
     image: "https://images.pexels.com/photos/28575487/pexels-photo-28575487.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -308,7 +310,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "11",
-    name: "College Backpack",
+    name: "Backpack",
     price: 64.99,
     originalPrice: 89.99,
     category: "accessories",
@@ -320,7 +322,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "24",
-    name: "College Desk Lamp",
+    name: "LED Desk Lamp",
     price: 32.99,
     originalPrice: 44.99,
     category: "accessories",
@@ -332,18 +334,18 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "25",
-    name: "College Desk Organizer",
+    name: "Desk Organizer",
     price: 16.99,
     category: "accessories",
     image: "https://images.pexels.com/photos/8099504/pexels-photo-8099504.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 98,
     inStock: 9,
-    description: "Bamboo desk organizer for keeping your dorm neat and tidy",
+    description: "Bamboo desk organizer for keeping your space neat and tidy",
   },
   {
     id: "26",
-    name: "College Sunglasses",
+    name: "Sunglasses",
     price: 27.99,
     originalPrice: 39.99,
     category: "accessories",
@@ -351,29 +353,29 @@ export const PRODUCTS: Product[] = [
     rating: 4.8,
     reviews: 167,
     inStock: 10,
-    description: "UV protection college-branded sunglasses for sunny campus days",
+    description: "UV protection sunglasses for sunny days",
   },
   {
     id: "27",
-    name: "College Notebook Set",
+    name: "Notebook Set",
     price: 12.99,
     category: "accessories",
     image: "https://images.pexels.com/photos/8099504/pexels-photo-8099504.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 145,
     inStock: 10,
-    description: "Set of 3 premium college-branded notebooks for classes",
+    description: "Set of 3 premium notebooks for classes",
   },
   {
     id: "28",
-    name: "College Keychain",
+    name: "Keychain",
     price: 9.99,
     category: "accessories",
     image: "https://images.pexels.com/photos/15679988/pexels-photo-15679988.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 89,
     inStock: 10,
-    description: "Durable metal college keychain - cute and practical",
+    description: "Durable metal keychain - cute and practical",
   },
 ];
 
@@ -381,6 +383,7 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [wishlist, setWishlist] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [userName, setUserName] = useState<string | null>(null);
 
   const addToCart = (product: Product, quantity: number, size?: string, color?: string) => {
     setCart((prev) => {
@@ -440,6 +443,7 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
         cart,
         wishlist,
         searchQuery,
+        userName,
         addToCart,
         removeFromCart,
         updateCartQuantity,
@@ -448,6 +452,7 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
         isInWishlist,
         setSearchQuery,
         getSearchResults,
+        setUserName,
       }}
     >
       {children}

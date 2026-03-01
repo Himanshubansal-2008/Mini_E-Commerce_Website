@@ -3,13 +3,15 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { useStore } from "@/context/StoreContext";
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight } from "lucide-react";
+import { formatINRPrice, convertToINR } from "@/lib/utils";
 
 export default function Cart() {
   const { cart, removeFromCart, updateCartQuantity } = useStore();
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.1;
-  const shipping = subtotal > 100 ? 0 : 9.99;
+  const subtotal = cart.reduce((sum, item) => sum + convertToINR(item.price) * item.quantity, 0);
+  const tax = Math.round(subtotal * 0.1);
+  const shippingThreshold = convertToINR(100);
+  const shipping = subtotal > shippingThreshold ? 0 : convertToINR(9.99);
   const total = subtotal + tax + shipping;
 
   if (cart.length === 0) {
@@ -76,7 +78,7 @@ export default function Cart() {
                         </p>
                       )}
                       <p className="text-lg font-bold text-primary">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {formatINRPrice(item.price * item.quantity)}
                       </p>
                     </div>
 
@@ -131,11 +133,11 @@ export default function Cart() {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-foreground/70">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>₹{subtotal.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between text-foreground/70">
                     <span>Tax (10%)</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span>₹{tax.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="flex justify-between text-foreground/70">
                     <span>Shipping</span>
@@ -143,7 +145,7 @@ export default function Cart() {
                       {shipping === 0 ? (
                         <span className="text-green-600 font-medium">Free</span>
                       ) : (
-                        `$${shipping.toFixed(2)}`
+                        `₹${shipping.toLocaleString('en-IN')}`
                       )}
                     </span>
                   </div>
@@ -151,7 +153,7 @@ export default function Cart() {
 
                 {shipping > 0 && (
                   <div className="mb-6 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
-                    Free shipping on orders over $100!
+                    Free shipping on orders over ₹{shippingThreshold.toLocaleString('en-IN')}!
                   </div>
                 )}
 
@@ -159,7 +161,7 @@ export default function Cart() {
                   <div className="flex justify-between">
                     <span className="font-bold text-foreground">Total</span>
                     <span className="text-2xl font-bold text-primary">
-                      ${total.toFixed(2)}
+                      ₹{total.toLocaleString('en-IN')}
                     </span>
                   </div>
                 </div>

@@ -12,7 +12,7 @@ import {
   RotateCcw,
   Shield,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatINRPrice } from "@/lib/utils";
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
@@ -161,15 +161,15 @@ export default function ProductDetails() {
               </div>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3 mb-6">
+              <div className="flex items-baseline gap-3 mb-6 flex-wrap">
                 <span className="text-4xl font-bold text-foreground">
-                  ${product.price.toFixed(2)}
+                  {formatINRPrice(product.price)}
                 </span>
                 <span className="text-lg text-muted-foreground line-through">
-                  ${product.originalPrice.toFixed(2)}
+                  {formatINRPrice(product.originalPrice)}
                 </span>
                 <span className="text-sm font-medium text-accent">
-                  Save ${(product.originalPrice - product.price).toFixed(2)}
+                  Save {formatINRPrice(product.originalPrice - product.price)}
                 </span>
               </div>
 
