@@ -288,38 +288,37 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-indigo-950 via-slate-900 to-black py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
+      <section className="relative bg-gradient-to-b from-blue-50 via-white to-blue-50 py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
         {/* Animated background elements */}
-        <div className="absolute top-10 right-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-pulse -z-10" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-violet-500/25 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-fuchsia-500/20 rounded-full blur-3xl animate-bounce -z-10" />
-        <div className="absolute -bottom-32 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-blue-200/40 rounded-full blur-3xl animate-pulse -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-purple-200/30 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl -z-10" />
 
         <div className="container flex flex-col items-center justify-center text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full mb-8 border border-cyan-400/60 backdrop-blur">
-            <Zap className="w-4 h-4 text-cyan-300 animate-bounce" />
-            <span className="text-sm font-bold text-cyan-200">
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-full mb-8 border border-yellow-300 backdrop-blur">
+            <Zap className="w-4 h-4 text-yellow-600 animate-bounce" />
+            <span className="text-sm font-bold text-yellow-700">
               New Collection Live
             </span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight slide-up">
+          <h1 className="text-5xl md:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight slide-up">
             Your College{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-violet-300 animate-pulse">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 animate-pulse">
               Style
             </span>
             ,
             <br />
             Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-pink-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
               Rules
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mb-10 leading-relaxed font-medium">
             Discover premium college merchandise designed for students who want
             to stand out. Unbeatable quality, incredible prices.
           </p>
@@ -332,13 +331,13 @@ export default function Home() {
                   .getElementById("products")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg hover:shadow-cyan-500/50"
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg"
             >
               Shop Now
             </button>
             <button
               onClick={() => setAuthModalOpen(true)}
-              className="px-8 py-4 bg-white/20 backdrop-blur text-white font-bold rounded-xl border-2 border-white/50 hover:bg-white/30 hover:border-white transition-all duration-200 text-base md:text-lg"
+              className="px-8 py-4 bg-white backdrop-blur text-blue-600 font-bold rounded-xl border-2 border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 text-base md:text-lg"
             >
               {userName ? "View Account" : "Sign Up Free"}
             </button>
@@ -347,26 +346,26 @@ export default function Home() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-cyan-400">
+              <div className="text-3xl md:text-4xl font-black text-blue-600">
                 50k+
               </div>
-              <p className="text-xs md:text-sm text-white/70 mt-1">
+              <p className="text-xs md:text-sm text-gray-600 mt-1">
                 Happy Students
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-violet-400">
+              <div className="text-3xl md:text-4xl font-black text-purple-600">
                 500+
               </div>
-              <p className="text-xs md:text-sm text-white/70 mt-1">
+              <p className="text-xs md:text-sm text-gray-600 mt-1">
                 Products
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-fuchsia-400">
+              <div className="text-3xl md:text-4xl font-black text-pink-600">
                 100%
               </div>
-              <p className="text-xs md:text-sm text-white/70 mt-1">
+              <p className="text-xs md:text-sm text-gray-600 mt-1">
                 Authentic
               </p>
             </div>
@@ -377,19 +376,19 @@ export default function Home() {
       {/* Trending Section */}
       <section
         id="trending"
-        className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 via-indigo-950/40 to-slate-950"
+        className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-b from-white to-blue-50"
       >
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full mb-6 border border-violet-400/50 backdrop-blur">
-              <TrendingUp className="w-4 h-4 text-violet-300 animate-bounce" />
-              <span className="text-sm font-bold text-violet-200">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full mb-6 border border-pink-300 backdrop-blur">
+              <TrendingUp className="w-4 h-4 text-pink-600 animate-bounce" />
+              <span className="text-sm font-bold text-pink-700">
                 Trending Now
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               What's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-fuchsia-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">
                 Hot Right Now
               </span>
             </h2>
@@ -407,18 +406,18 @@ export default function Home() {
       </section>
 
       {/* Coupons Section */}
-      <section className="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24">
+      <section className="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24">
         <div className="container">
           <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full mb-6 border border-cyan-400/50 backdrop-blur">
-              <Gift className="w-4 h-4 text-cyan-300 animate-bounce" />
-              <span className="text-sm font-bold text-cyan-200">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-full mb-6 border border-yellow-300 backdrop-blur">
+              <Gift className="w-4 h-4 text-yellow-600 animate-bounce" />
+              <span className="text-sm font-bold text-yellow-700">
                 Exclusive Offers
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Limited Time{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600">
                 Coupons
               </span>
             </h2>
@@ -462,16 +461,16 @@ export default function Home() {
       </section>
 
       {/* Men's Collection */}
-      <section id="men" className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 to-slate-900">
+      <section id="men" className="py-16 md:py-24 scroll-mt-16 bg-white">
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full mb-6 border border-blue-400/50 backdrop-blur">
-              <Users className="w-4 h-4 text-blue-300 animate-bounce" />
-              <span className="text-sm font-bold text-blue-200">For Him</span>
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full mb-6 border border-blue-300 backdrop-blur">
+              <Users className="w-4 h-4 text-blue-600 animate-bounce" />
+              <span className="text-sm font-bold text-blue-700">For Him</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Men's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
                 Collection
               </span>
             </h2>
