@@ -288,17 +288,18 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
+      <section className="relative bg-gradient-to-br from-indigo-950 via-slate-900 to-black py-16 md:py-32 overflow-hidden min-h-[600px] flex items-center">
         {/* Animated background elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse -z-10" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-10 w-80 h-80 bg-cyan-500/30 rounded-full blur-3xl animate-pulse -z-10" />
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-violet-500/25 rounded-full blur-3xl animate-pulse delay-700 -z-10" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-fuchsia-500/20 rounded-full blur-3xl animate-bounce -z-10" />
+        <div className="absolute -bottom-32 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl -z-10" />
 
         <div className="container flex flex-col items-center justify-center text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full mb-8 border border-yellow-400/50 backdrop-blur">
-            <Zap className="w-4 h-4 text-yellow-300 animate-bounce" />
-            <span className="text-sm font-bold text-yellow-300">
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full mb-8 border border-cyan-400/60 backdrop-blur">
+            <Zap className="w-4 h-4 text-cyan-300 animate-bounce" />
+            <span className="text-sm font-bold text-cyan-200">
               New Collection Live
             </span>
           </div>
@@ -306,13 +307,13 @@ export default function Home() {
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight slide-up">
             Your College{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 animate-pulse">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-violet-300 animate-pulse">
               Style
             </span>
             ,
             <br />
             Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-pink-300">
               Rules
             </span>
           </h1>
@@ -331,7 +332,7 @@ export default function Home() {
                   .getElementById("products")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg"
+              className="px-8 py-4 bg-gradient-to-r from-cyan-500 via-blue-600 to-violet-600 text-white font-bold rounded-xl hover:shadow-2xl active:scale-95 transition-all duration-200 shadow-lg text-base md:text-lg hover:shadow-cyan-500/50"
             >
               Shop Now
             </button>
@@ -346,7 +347,7 @@ export default function Home() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-3 gap-4 md:gap-8">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-blue-400">
+              <div className="text-3xl md:text-4xl font-black text-cyan-400">
                 50k+
               </div>
               <p className="text-xs md:text-sm text-white/70 mt-1">
@@ -354,7 +355,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-purple-400">
+              <div className="text-3xl md:text-4xl font-black text-violet-400">
                 500+
               </div>
               <p className="text-xs md:text-sm text-white/70 mt-1">
@@ -362,7 +363,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-black text-pink-400">
+              <div className="text-3xl md:text-4xl font-black text-fuchsia-400">
                 100%
               </div>
               <p className="text-xs md:text-sm text-white/70 mt-1">
@@ -376,23 +377,23 @@ export default function Home() {
       {/* Trending Section */}
       <section
         id="trending"
-        className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-b from-background to-primary/3"
+        className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 via-indigo-950/40 to-slate-950"
       >
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-secondary/20 to-primary/20 rounded-full mb-6 border border-secondary/30 backdrop-blur">
-              <TrendingUp className="w-4 h-4 text-secondary animate-bounce" />
-              <span className="text-sm font-bold text-secondary">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 rounded-full mb-6 border border-violet-400/50 backdrop-blur">
+              <TrendingUp className="w-4 h-4 text-violet-300 animate-bounce" />
+              <span className="text-sm font-bold text-violet-200">
                 Trending Now
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               What's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-fuchsia-300">
                 Hot Right Now
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Check out the bestsellers everyone's talking about
             </p>
           </div>
@@ -406,22 +407,22 @@ export default function Home() {
       </section>
 
       {/* Coupons Section */}
-      <section className="bg-gradient-to-b from-background via-accent/5 to-background py-16 md:py-24">
+      <section className="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 py-16 md:py-24">
         <div className="container">
           <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-6 border border-accent/30 backdrop-blur">
-              <Gift className="w-4 h-4 text-accent animate-bounce" />
-              <span className="text-sm font-bold text-accent">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full mb-6 border border-cyan-400/50 backdrop-blur">
+              <Gift className="w-4 h-4 text-cyan-300 animate-bounce" />
+              <span className="text-sm font-bold text-cyan-200">
                 Exclusive Offers
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Limited Time{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">
                 Coupons
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Unlock massive savings with our exclusive discount codes
             </p>
           </div>
@@ -461,20 +462,20 @@ export default function Home() {
       </section>
 
       {/* Men's Collection */}
-      <section id="men" className="py-16 md:py-24 scroll-mt-16">
+      <section id="men" className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 to-slate-900">
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full mb-6 border border-primary/30 backdrop-blur">
-              <Users className="w-4 h-4 text-primary animate-bounce" />
-              <span className="text-sm font-bold text-primary">For Him</span>
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full mb-6 border border-blue-400/50 backdrop-blur">
+              <Users className="w-4 h-4 text-blue-300 animate-bounce" />
+              <span className="text-sm font-bold text-blue-200">For Him</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Men's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">
                 Collection
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Premium hoodies and tees designed for the modern college guy
             </p>
           </div>
@@ -490,21 +491,21 @@ export default function Home() {
       {/* Women's Collection */}
       <section
         id="women"
-        className="bg-gradient-to-b from-background to-secondary/3 py-16 md:py-24 scroll-mt-16"
+        className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-950 py-16 md:py-24 scroll-mt-16"
       >
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full mb-6 border border-secondary/30 backdrop-blur">
-              <Users className="w-4 h-4 text-secondary animate-bounce" />
-              <span className="text-sm font-bold text-secondary">For Her</span>
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 rounded-full mb-6 border border-fuchsia-400/50 backdrop-blur">
+              <Users className="w-4 h-4 text-fuchsia-300 animate-bounce" />
+              <span className="text-sm font-bold text-fuchsia-200">For Her</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Women's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-pink-300">
                 Collection
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Stylish and comfortable apparel for college women
             </p>
           </div>
@@ -518,22 +519,22 @@ export default function Home() {
       </section>
 
       {/* Accessories Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-950">
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full mb-6 border border-primary/30 backdrop-blur">
-              <Award className="w-4 h-4 text-primary animate-bounce" />
-              <span className="text-sm font-bold text-primary">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded-full mb-6 border border-violet-400/50 backdrop-blur">
+              <Award className="w-4 h-4 text-violet-300 animate-bounce" />
+              <span className="text-sm font-bold text-violet-200">
                 Must-Have Items
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               College{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-purple-300">
                 Accessories
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Complete your college look with our essential accessories
             </p>
           </div>
@@ -547,22 +548,22 @@ export default function Home() {
       </section>
 
       {/* Student Testimonials */}
-      <section className="bg-gradient-to-b from-background to-accent/3 py-16 md:py-24">
+      <section className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-950 py-16 md:py-24">
         <div className="container">
           <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-accent/20 to-primary/20 rounded-full mb-6 border border-accent/30 backdrop-blur">
-              <MessageCircle className="w-4 h-4 text-accent animate-bounce" />
-              <span className="text-sm font-bold text-accent">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full mb-6 border border-cyan-400/50 backdrop-blur">
+              <MessageCircle className="w-4 h-4 text-cyan-300 animate-bounce" />
+              <span className="text-sm font-bold text-cyan-200">
                 Real Reviews
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               What Students Are{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">
                 Saying
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Join thousands of happy college students
             </p>
           </div>
@@ -599,16 +600,16 @@ export default function Home() {
       </section>
 
       {/* All Products */}
-      <section id="products" className="py-16 md:py-24 scroll-mt-16">
+      <section id="products" className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 to-slate-900">
         <div className="container">
           <div className="mb-16 text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
               Browse All{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-300">
                 Products
               </span>
             </h2>
-            <p className="text-foreground/60 text-lg font-medium">
+            <p className="text-white/70 text-lg font-medium">
               Explore our complete catalog of college merchandise
             </p>
           </div>
@@ -624,11 +625,11 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-gradient-to-r from-primary via-secondary to-accent text-primary-foreground py-16 md:py-28 scroll-mt-16 relative overflow-hidden"
+        className="bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-700 text-white py-16 md:py-28 scroll-mt-16 relative overflow-hidden"
       >
         {/* Decorative elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-white/15 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10" />
 
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
@@ -642,7 +643,7 @@ export default function Home() {
 
             <button
               onClick={() => setContactModalOpen(true)}
-              className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg"
+              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg hover:shadow-white/30"
             >
               Contact Us
             </button>
