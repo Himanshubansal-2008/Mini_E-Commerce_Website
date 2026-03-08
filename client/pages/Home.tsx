@@ -339,7 +339,7 @@ export default function Home() {
               onClick={() => setAuthModalOpen(true)}
               className="px-8 py-4 bg-white/20 backdrop-blur text-white font-bold rounded-xl border-2 border-white/50 hover:bg-white/30 hover:border-white transition-all duration-200 text-base md:text-lg"
             >
-              {isAuthenticated ? "View Account" : "Sign Up Free"}
+              {userName ? "View Account" : "Sign Up Free"}
             </button>
           </div>
 
