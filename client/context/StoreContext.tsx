@@ -49,7 +49,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/30095401/pexels-photo-30095401.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 234,
-    inStock: 8,
+    inStock: 7,
     description: "Premium hoodie with embroidered logo",
   },
   {
@@ -61,7 +61,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9558583/pexels-photo-9558583.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 189,
-    inStock: 9,
+    inStock: 5,
     description: "Vintage style t-shirt",
   },
   {
@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9396311/pexels-photo-9396311.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 312,
-    inStock: 7,
+    inStock: 6,
     description: "Comfortable campus crewneck sweatshirt",
   },
   {
@@ -85,7 +85,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9558699/pexels-photo-9558699.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 156,
-    inStock: 10,
+    inStock: 8,
     description: "Fitted t-shirt perfect for casual life",
   },
   {
@@ -97,7 +97,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/18956666/pexels-photo-18956666.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 401,
-    inStock: 6,
+    inStock: 3,
     description: "Trendy oversized hoodie with large logo",
   },
   {
@@ -109,7 +109,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9901666/pexels-photo-9901666.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 5.0,
     reviews: 267,
-    inStock: 8,
+    inStock: 5,
     description: "Premium embroidered sweatshirt",
   },
   {
@@ -121,7 +121,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9901666/pexels-photo-9901666.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 203,
-    inStock: 9,
+    inStock: 6,
     description: "Matching sweatpants for the ultimate comfort look",
   },
   {
@@ -132,7 +132,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/10761593/pexels-photo-10761593.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 5.0,
     reviews: 156,
-    inStock: 5,
+    inStock: 2,
     description: "Oversized cozy hoodie blanket for dorm rooms",
   },
 
@@ -146,7 +146,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/3921718/pexels-photo-3921718.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 287,
-    inStock: 10,
+    inStock: 7,
     description: "20000mAh power bank with fast charging - keeps your devices powered all day",
   },
   {
@@ -157,7 +157,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/21854466/pexels-photo-21854466.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 156,
-    inStock: 8,
+    inStock: 5,
     description: "Qi-certified wireless charging pad - works with all compatible phones",
   },
   {
@@ -169,7 +169,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/4097203/pexels-photo-4097203.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 134,
-    inStock: 9,
+    inStock: 4,
     description: "4-port USB hub for dorm setup - connect multiple devices at once",
   },
   {
@@ -181,7 +181,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/4097203/pexels-photo-4097203.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 412,
-    inStock: 10,
+    inStock: 8,
     description: "3-in-1 charging cable for Lightning, USB-C, and Micro USB",
   },
 
@@ -195,7 +195,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/3737800/pexels-photo-3737800.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 298,
-    inStock: 10,
+    inStock: 6,
     description: "Double-wall insulated water bottle keeps drinks hot or cold for 24 hours",
   },
   {
@@ -207,7 +207,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/9868632/pexels-photo-9868632.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 187,
-    inStock: 7,
+    inStock: 4,
     description: "32oz thermos perfect for hot coffee or cold beverages during classes",
   },
   {
@@ -218,7 +218,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/6312177/pexels-photo-6312177.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 145,
-    inStock: 8,
+    inStock: 5,
     description: "Set of 2 ceramic coffee mugs with elegant design",
   },
   {
@@ -230,7 +230,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/3737800/pexels-photo-3737800.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 98,
-    inStock: 9,
+    inStock: 3,
     description: "Lightweight sports water bottle - perfect for gym and outdoor activities",
   },
 
@@ -244,7 +244,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/5413298/pexels-photo-5413298.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 234,
-    inStock: 8,
+    inStock: 6,
     description: "Comfortable sneakers with branding - perfect for campus walking",
   },
   {
@@ -256,7 +256,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/5413298/pexels-photo-5413298.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 167,
-    inStock: 6,
+    inStock: 3,
     description: "Versatile casual shoes for everyday life",
   },
   {
@@ -268,7 +268,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/8669419/pexels-photo-8669419.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 156,
-    inStock: 10,
+    inStock: 7,
     description: "Comfy dorm slippers - perfect for cozy nights",
   },
 
@@ -282,7 +282,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/26956136/pexels-photo-26956136.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.5,
     reviews: 98,
-    inStock: 9,
+    inStock: 5,
     description: "Classic baseball cap with embroidered logo",
   },
   {
@@ -294,7 +294,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/3737800/pexels-photo-3737800.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 142,
-    inStock: 10,
+    inStock: 8,
     description: "Reusable stainless steel water bottle",
   },
   {
@@ -305,7 +305,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/19197736/pexels-photo-19197736.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 167,
-    inStock: 8,
+    inStock: 4,
     description: "Durable canvas tote bag perfect for campus",
   },
   {
@@ -317,7 +317,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 89,
-    inStock: 7,
+    inStock: 6,
     description: "Spacious backpack with laptop compartment",
   },
   {
@@ -329,7 +329,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/12885116/pexels-photo-12885116.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 125,
-    inStock: 6,
+    inStock: 2,
     description: "LED desk lamp for studying - adjustable brightness and flexible arm",
   },
   {
@@ -340,7 +340,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/10567236/pexels-photo-10567236.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.6,
     reviews: 98,
-    inStock: 9,
+    inStock: 5,
     description: "Bamboo desk organizer for keeping your space neat and tidy",
   },
   {
@@ -352,7 +352,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/13534508/pexels-photo-13534508.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.8,
     reviews: 167,
-    inStock: 10,
+    inStock: 7,
     description: "UV protection sunglasses for sunny days",
   },
   {
@@ -363,7 +363,7 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/8251117/pexels-photo-8251117.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.7,
     reviews: 145,
-    inStock: 10,
+    inStock: 8,
     description: "Set of 3 premium notebooks for classes",
   },
   {
@@ -374,8 +374,46 @@ export const PRODUCTS: Product[] = [
     image: "https://images.pexels.com/photos/15679988/pexels-photo-15679988.jpeg?auto=compress&cs=tinysrgb&w=600",
     rating: 4.9,
     reviews: 89,
-    inStock: 10,
+    inStock: 6,
     description: "Durable metal keychain - cute and practical",
+  },
+
+  // Trending Accessories (New additions with low stock)
+  {
+    id: "29",
+    name: "Wireless Earbuds",
+    price: 44.99,
+    originalPrice: 64.99,
+    category: "trending",
+    image: "https://images.pexels.com/photos/3879722/pexels-photo-3879722.jpeg?auto=compress&cs=tinysrgb&w=600",
+    rating: 4.8,
+    reviews: 312,
+    inStock: 2,
+    description: "Premium wireless earbuds with noise cancellation",
+  },
+  {
+    id: "30",
+    name: "Portable Speaker",
+    price: 39.99,
+    originalPrice: 54.99,
+    category: "trending",
+    image: "https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&cs=tinysrgb&w=600",
+    rating: 4.7,
+    reviews: 245,
+    inStock: 3,
+    description: "Waterproof Bluetooth speaker with 360° sound",
+  },
+  {
+    id: "31",
+    name: "Phone Ring Stand",
+    price: 8.99,
+    originalPrice: 12.99,
+    category: "trending",
+    image: "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=600",
+    rating: 4.6,
+    reviews: 178,
+    inStock: 2,
+    description: "Stylish phone ring stand for easy viewing and grip",
   },
 ];
 

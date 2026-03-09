@@ -104,7 +104,10 @@ function ProductCard({ product }: ProductCardProps) {
         </button>
 
         {/* In Stock Badge */}
-        <div className="absolute bottom-3 left-3 bg-green-500 text-white px-2.5 py-1 rounded-full text-xs font-medium">
+        <div className={cn(
+          "absolute bottom-3 left-3 text-white px-2.5 py-1 rounded-full text-xs font-medium",
+          product.inStock <= 5 ? "bg-orange-500" : "bg-green-500"
+        )}>
           {product.inStock} in stock
         </div>
       </div>
@@ -490,17 +493,17 @@ export default function Home() {
       {/* Women's Collection */}
       <section
         id="women"
-        className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-950 py-16 md:py-24 scroll-mt-16"
+        className="bg-gradient-to-b from-pink-50 to-white py-16 md:py-24 scroll-mt-16"
       >
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-fuchsia-500/20 to-pink-500/20 rounded-full mb-6 border border-fuchsia-400/50 backdrop-blur">
-              <Users className="w-4 h-4 text-fuchsia-300 animate-bounce" />
-              <span className="text-sm font-bold text-fuchsia-200">For Her</span>
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full mb-6 border border-pink-300 backdrop-blur">
+              <Users className="w-4 h-4 text-pink-600 animate-bounce" />
+              <span className="text-sm font-bold text-pink-700">For Her</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Women's{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-pink-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-600">
                 Collection
               </span>
             </h2>
@@ -518,18 +521,18 @@ export default function Home() {
       </section>
 
       {/* Accessories Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-950">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-purple-50 to-blue-50">
         <div className="container">
           <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded-full mb-6 border border-violet-400/50 backdrop-blur">
-              <Award className="w-4 h-4 text-violet-300 animate-bounce" />
-              <span className="text-sm font-bold text-violet-200">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-100 to-violet-100 rounded-full mb-6 border border-purple-300 backdrop-blur">
+              <Award className="w-4 h-4 text-purple-600 animate-bounce" />
+              <span className="text-sm font-bold text-purple-700">
                 Must-Have Items
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               College{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-purple-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-violet-600">
                 Accessories
               </span>
             </h2>
@@ -547,18 +550,18 @@ export default function Home() {
       </section>
 
       {/* Student Testimonials */}
-      <section className="bg-gradient-to-b from-indigo-950 via-slate-900 to-slate-950 py-16 md:py-24">
+      <section className="bg-gradient-to-b from-white to-blue-50 py-16 md:py-24">
         <div className="container">
           <div className="mb-16 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-full mb-6 border border-cyan-400/50 backdrop-blur">
-              <MessageCircle className="w-4 h-4 text-cyan-300 animate-bounce" />
-              <span className="text-sm font-bold text-cyan-200">
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-orange-100 to-red-100 rounded-full mb-6 border border-orange-300 backdrop-blur">
+              <MessageCircle className="w-4 h-4 text-orange-600 animate-bounce" />
+              <span className="text-sm font-bold text-orange-700">
                 Real Reviews
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               What Students Are{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
                 Saying
               </span>
             </h2>
@@ -599,12 +602,12 @@ export default function Home() {
       </section>
 
       {/* All Products */}
-      <section id="products" className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-br from-slate-950 to-slate-900">
+      <section id="products" className="py-16 md:py-24 scroll-mt-16 bg-gradient-to-b from-blue-50 to-white">
         <div className="container">
           <div className="mb-16 text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Browse All{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Products
               </span>
             </h2>
@@ -624,11 +627,11 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-700 text-white py-16 md:py-28 scroll-mt-16 relative overflow-hidden"
+        className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16 md:py-28 scroll-mt-16 relative overflow-hidden"
       >
         {/* Decorative elements */}
-        <div className="absolute top-10 right-10 w-72 h-72 bg-white/15 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-white/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl -z-10" />
 
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
@@ -642,7 +645,7 @@ export default function Home() {
 
             <button
               onClick={() => setContactModalOpen(true)}
-              className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg hover:shadow-white/30"
+              className="px-8 py-4 bg-white text-purple-600 font-bold rounded-xl hover:shadow-xl active:scale-95 transition-all duration-200 text-base md:text-lg"
             >
               Contact Us
             </button>
