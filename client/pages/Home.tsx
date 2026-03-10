@@ -73,9 +73,9 @@ function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="stagger-item bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group product-card-hover border border-border/50 hover:border-primary/50">
+    <div className="stagger-item bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 group product-card-hover border border-border/50 hover:border-primary/50 h-full flex flex-col">
       {/* Image */}
-      <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-muted to-muted/50">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-muted to-muted/50 flex-shrink-0">
         <img
           src={product.image}
           alt={product.name}
@@ -83,7 +83,7 @@ function ProductCard({ product }: ProductCardProps) {
         />
         {/* Discount Badge */}
         {discount > 0 && (
-          <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-xs font-bold">
+          <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-xs font-bold shadow-md">
             -{discount}%
           </div>
         )}
@@ -91,7 +91,7 @@ function ProductCard({ product }: ProductCardProps) {
         {/* Favorite Button */}
         <button
           onClick={handleFavorite}
-          className="absolute top-3 left-3 p-2 bg-white/90 rounded-full hover:bg-white transition-all"
+          className="absolute top-3 left-3 p-2 bg-white/90 rounded-full hover:bg-white transition-all shadow-md"
         >
           <Heart
             className={cn(
@@ -105,7 +105,7 @@ function ProductCard({ product }: ProductCardProps) {
 
         {/* In Stock Badge */}
         <div className={cn(
-          "absolute bottom-3 left-3 text-white px-2.5 py-1 rounded-full text-xs font-medium",
+          "absolute bottom-3 left-3 text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-md",
           product.inStock <= 5 ? "bg-orange-500" : "bg-green-500"
         )}>
           {product.inStock} in stock
@@ -113,16 +113,16 @@ function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col">
+      <div className="p-5 flex flex-col flex-grow">
         <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">
           {product.category}
         </p>
-        <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 text-base">
+        <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 text-base h-10 flex items-start">
           {product.name}
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-2 mb-3">
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => (
               <Star
@@ -142,56 +142,55 @@ function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Price Section */}
-        <div className="mb-3">
-          <p className="text-xs text-muted-foreground font-medium mb-1">
-            Price:
-          </p>
-          <p className="text-2xl font-bold text-primary mb-2">
+        <div className="mb-4 pb-3 border-b border-border/30">
+          <p className="text-2xl font-bold text-primary mb-1">
             {formatINRPrice(product.price)}
           </p>
           {product.originalPrice && (
-            <p className="text-xs text-muted-foreground">
-              <span className="line-through">
+            <p className="text-xs text-muted-foreground space-y-1">
+              <span className="line-through block">
                 {formatINRPrice(product.originalPrice)}
               </span>
-              <span className="ml-2 font-bold text-accent">
+              <span className="font-bold text-accent block">
                 Save {formatINRPrice(product.originalPrice - product.price)}
               </span>
             </p>
           )}
         </div>
 
-        {/* Add to Cart or Quantity */}
-        {cartQuantity === 0 ? (
-          // Not in cart - show Add to Cart button
-          <button
-            onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
-          >
-            <ShoppingCart className="w-4 h-4" />
-            Add to Cart
-          </button>
-        ) : (
-          // In cart - show quantity controls
-          <div className="flex items-center gap-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-2 border border-primary/30">
+        {/* Add to Cart or Quantity - Always at bottom */}
+        <div className="mt-auto">
+          {cartQuantity === 0 ? (
+            // Not in cart - show Add to Cart button
             <button
-              onClick={decrementQuantity}
-              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 transition-colors"
+              onClick={handleAddToCart}
+              className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground font-bold py-3 rounded-lg hover:shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
             >
-              −
+              <ShoppingCart className="w-4 h-4" />
+              Add to Cart
             </button>
-            <span className="flex-1 text-center font-bold text-lg text-primary">
-              {cartQuantity}
-            </span>
-            <button
-              onClick={incrementQuantity}
-              disabled={cartQuantity >= product.inStock}
-              className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              +
-            </button>
-          </div>
-        )}
+          ) : (
+            // In cart - show quantity controls
+            <div className="flex items-center gap-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-2 border border-primary/30">
+              <button
+                onClick={decrementQuantity}
+                className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 transition-colors"
+              >
+                −
+              </button>
+              <span className="flex-1 text-center font-bold text-lg text-primary">
+                {cartQuantity}
+              </span>
+              <button
+                onClick={incrementQuantity}
+                disabled={cartQuantity >= product.inStock}
+                className="flex-1 py-2 text-sm font-bold text-primary rounded hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                +
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
